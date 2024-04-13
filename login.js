@@ -1,46 +1,63 @@
 const container = document.querySelector(".container");
 const pwShowHide = document.querySelectorAll(".showHidePw");
-const pwFields = document.querySelectorAll(".password");
-const signUp = document.querySelector(".signup-link");
-const login = document.querySelector(".login-link");
+const emailInput = document.querySelector("input[type='email']");
+const loginButton = document.querySelector(".button input[type='button']");
 
 // Toggle password visibility
 pwShowHide.forEach(eyeIcon => {
     eyeIcon.addEventListener("click", () => {
-        pwFields.forEach(pwField => {
-            if (pwField.type === "password") {
-                pwField.type = "text";
-
-                pwShowHide.forEach(icon => {
-                    icon.classList.replace("uil-eye-slash", "uil-eye");
-                });
-            } else {
-                pwField.type = "password";
-
-                pwShowHide.forEach(icon => {
-                    icon.classList.replace("uil-eye", "uil-eye-slash");
-                });
-            }
-        });
+        const passwordField = eyeIcon.previousElementSibling;
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.classList.replace("uil-eye-slash", "uil-eye");
+        } else {
+            passwordField.type = "password";
+            eyeIcon.classList.replace("uil-eye", "uil-eye-slash");
+        }
     });
 });
 
-// Event listener for signup link
-signUp.addEventListener('click', () => {
-    container.classList.add("active");
+// Event listener for login button click
+loginButton.addEventListener("click", () => {
+    const email = emailInput.value.trim();
+    const passwordFields = document.querySelectorAll(".password");
+    let isValid = true;
+
+    // Check if any field is empty
+    if (email === "") {
+        emailInput.setCustomValidity("Please enter your email.");
+        isValid = false;
+    } else {
+        emailInput.setCustomValidity("");
+    }
+
+    passwordFields.forEach(passwordField => {
+        const password = passwordField.value.trim();
+        if (password === "") {
+            passwordField.setCustomValidity("Please enter your password.");
+            isValid = false;
+        } else {
+            passwordField.setCustomValidity("");
+        }
+    });
+
+    // If all fields are filled, submit the form
+    if (isValid) {
+        // Redirect to home.html
+        window.location.href = "home.html";
+    } else {
+        // Show alert for error
+        alert("Please fill in all the required fields.");
+    }
 });
 
-// Event listener for login link
-login.addEventListener("click", () => {
-    container.classList.remove("active");
+// Email format validation
+emailInput.addEventListener("input", function(event) {
+    const email = this.value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        this.setCustomValidity("Invalid email format! Must be in the format 'example@example.com'");
+    } else {
+        this.setCustomValidity("");
+    }
 });
-
-// Function to switch to signup form
-function register() {
-    container.classList.add("active");
-}
-
-// Function to switch to login form
-function logindn() {
-    container.classList.remove("active");
-}
