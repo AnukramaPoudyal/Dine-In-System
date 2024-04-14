@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Chivo", sans-serif; 
+}
+
+.home {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(./images/home\ bg.png);
+    background-size: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Adjust this to fit elements properly */
+    position: relative;
+    color: white;
+    text-transform: uppercase;
+}
+
+.left {
+    width: 30%; /* Adjust width to fit properly */
+    min-height: 100vh;
+    position: relative;
+}
+
+.left img {
+    width: 80%;
+    position: absolute;
+}
+
+.right {
+    width: 70%;
+    min-height: 100vh;
+    padding: 70px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+}
+
+a {
+    display: block;
+    text-align: end;
+    text-decoration: dashed;
+    font-size: 28px;
+    color: goldenrod;
+}
+
+.right .top {
+    font-size: 38px;
+    width: 600px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.middle img {
+    width: 300px;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 24px;
+    right: 0;
+}
+
+.bottom p {
+    font-size: 36px;
+}
+
+.bottom p span {
+    color: goldenrod;
+    font-size: 36px;
+    text-align: right;
+    margin-top: 16px;
+}
+
+.bottom button {
+    color: goldenrod;
+    font-size: 24px;
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.home-footer {
+    position: absolute;
+    bottom: 24px;
+    right: 0;
+}

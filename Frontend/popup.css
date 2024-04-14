@@ -1,0 +1,69 @@
+/* Popup container styles */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  /* Popup content styles */
+  .popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9; /* Light gray background */
+    padding: 40px; /* Increased padding */
+    border-radius: 20px; /* Increased border radius */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Increased box shadow */
+    text-align: center;
+    background-image: url('./images/popup.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Close button styles */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color:#ffffff;
+  }
+  
+  /* Popup message styles */
+  .popup-message {
+    margin-bottom: 20px;
+    color: #ffffff; 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 18px;
+  }
+  
+  /* Button styles */
+  .popup-button {
+    padding: 15px 30px; /* Increased padding */
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: goldenrod;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .popup-button:hover {
+    background-color: darkgoldenrod;
+  }
+  
+  /* Login/Signup button styles */
+  .login-signup-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
