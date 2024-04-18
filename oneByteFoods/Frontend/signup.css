@@ -68,7 +68,7 @@ body {
     bottom: 0;
     height: 3px;
     width: 30px;
-    background-color: goldenrod;
+    background-color: #556B2F;
     border-radius: 25px;
 }
 
@@ -93,7 +93,7 @@ body {
 }
 
 .input-field input:is(:focus, :valid) {
-    border-bottom-color: goldenrod;
+    border-bottom-color: #556B2F;
 }
 
 .input-field i {
@@ -105,7 +105,7 @@ body {
 }
 
 .input-field input:is(:focus, :valid) ~ i {
-    color: goldenrod;
+    color: #556B2F;
 }
 
 .input-field i.icon {
@@ -132,16 +132,17 @@ body {
 
 .checkbox-content input {
     margin: 0 8px -2px 4px;
-    accent-color: goldenrod;
+    accent-color: #556B2F;
 }
 
 .form a.text {
     text-decoration: none;
-    color: goldenrod;
+    color: #556B2F;
 }
 
 .form a:hover {
     text-decoration: underline;
+    color: #b8870e;
 }
 
 .form .text {
@@ -154,7 +155,7 @@ body {
     color: #fff;
     letter-spacing: 1px;
     border-radius: 6px;
-    background-color: goldenrod;
+    background-color: #556B2F;
     font-size: 17px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -162,7 +163,7 @@ body {
 }
 
 .button input:hover {
-    background-color: goldenrod;
+    background-color: #556B2F;
 }
 
 .form .login-signup {
