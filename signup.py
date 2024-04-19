@@ -1,3 +1,4 @@
+import re
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -11,8 +12,9 @@ def signup(request):
         password = data.get("password")
         first_name = data.get("first_name")
         last_name = data.get("last_name")
+        contact_number = data.get("contact_number")  
         if is_valid_email(email):
-            user = usermodel.User(firstname=first_name, lastname=last_name, email=email, password=password)
+            user = usermodel.User(firstname=first_name, lastname=last_name, email=email, password=password, contact_number=contact_number)  
             user.save()
             return JsonResponse({"message": "Signup successful!"})
         return JsonResponse({"error": "Invalid email format"})
