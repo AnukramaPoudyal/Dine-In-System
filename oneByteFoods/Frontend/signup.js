@@ -5,6 +5,7 @@ const signUp = document.querySelector(".signup-link");
 const login = document.querySelector(".login-link");
 const submitBtn = document.querySelector(".submit-btn");
 
+
 // Toggle password visibility
 pwShowHide.forEach(eyeIcon => {
     eyeIcon.addEventListener("click", () => {

@@ -3,6 +3,35 @@ const pwShowHide = document.querySelectorAll(".showHidePw");
 const emailInput = document.querySelector("input[type='email']");
 const loginButton = document.querySelector(".button input[type='button']");
 
+// Example for login
+loginButton.addEventListener('click', () => {
+    const email = document.getElementById('email-input').value;
+    const password = document.getElementById('password-input').value;
+    
+    fetch('login/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            // Login successful, redirect user or show success message
+        } else {
+            // Login failed, display error message to the user
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+
 // Toggle password visibility
 pwShowHide.forEach(eyeIcon => {
     eyeIcon.addEventListener("click", () => {
