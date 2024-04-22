@@ -1,38 +1,34 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-import re
-from django.db import transaction  # Import transaction module
+from django.views.decorators.csrf import csrf_exempt
 import json
-import sample.user.models as usermodel
+from django.contrib.auth.hashers import make_password, check_password
+from .models import User
 
 @csrf_exempt
 def login(request):
     if request.method == "POST":
-        try:
-            with transaction.atomic():  # Use atomic transaction to ensure data integrity
-                data = json.loads(request.body)
-                email = data.get("email")
-                password = data.get("password")
-                if is_valid_email(email):
-                    try:
-                        user = usermodel.User.objects.get(email=email, password=password)
-                        if user:
-                            # User authentication successful
-                            return JsonResponse({"message": "Login successful"})
-                        else:
-                            # User authentication failed
-                            return JsonResponse({"error": "Invalid credentials"})
-                    except usermodel.User.DoesNotExist:
-                        # User does not exist
-                        return JsonResponse({"error": "User does not exist"})
-               else:
-                    # Invalid email format
-                    return JsonResponse({"error": "Invalid email format"})
-        except Exception as e:
-            # Log any exceptions that occur during the login process
-            print(f"Error during login: {e}")
-            return JsonResponse({"error": "An unexpected error occurred"}, status=500)
+        data = json.loads(request.body)
+        email = data.get("email")
+        password = data.get("password")
+        
+        if not email or not password:
+            return JsonResponse({"error": "Invalid parameters"}, status=400)
 
-    else:
-        # Invalid HTTP method
-        return JsonResponse({"error": "Invalid method"}, status=405)
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return JsonResponse({"error": "User does not exist"}, status=400)
+
+        if not check_password(password, user.password):
+            return JsonResponse({"error": "Invalid credentials"}, status=400)
+
+        if not user.is_active:
+            return JsonResponse({"error": "User account is not active"}, status=400)
+
+        if not user.signup_completed:
+            return JsonResponse({"error": "User signup process is not completed"}, status=400)
+
+        return JsonResponse({"message": "Login successful"})
+    
+    return JsonResponse({"error": "Invalid method"}, status=405)
