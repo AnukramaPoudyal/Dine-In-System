@@ -11,8 +11,6 @@
 <body>
     <div class="container">
         <div class="forms">
-            <form action="{% url 'signup' %}" method="POST">
-
             <!-- REGISTRATION FORM -->
             <div class="form signup">
                 <span class="title">Signup</span>
@@ -26,29 +24,29 @@
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="tel" id="contactNo" placeholder="Enter your contact number" required>
+                        <input type="tel" id="contactNo" placeholder="Enter your contact number" pattern="[0-9]+" title="Please enter a valid contact number (numbers only)" required>
                         <i class="uil uil-phone icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <input type="email" id="email" placeholder="Enter your email" autocomplete="username" required>
                         <i class="uil uil-envelope icon"></i>
                         <span class="validation-message" id="emailError"></span>
                     </div>
                     <div class="input-field">
-                        <input type="password" id="password" class="password" placeholder="Create password" required>
+                        <input type="password" id="password" class="password" placeholder="Create password" autocomplete="new-password" required>
                         <i class="uil uil-lock icon"></i>
                         <span class="showHidePw uil uil-eye-slash"></span>
                         <span class="validation-message" id="passwordError"></span>
                     </div>
                     <div class="input-field">
-                        <input type="password" id="confirmPassword" class="password" placeholder="Confirm password" required>
+                        <input type="password" id="confirmPassword" class="password" placeholder="Confirm password" autocomplete="new-password" required>
                         <i class="uil uil-lock icon"></i>
                         <span class="showHidePw uil uil-eye-slash"></span>
                         <span class="validation-message" id="confirmPasswordError"></span>
                     </div>
                     <div class="checkbox-text">
                         <div class="checkbox-content">
-                            <input type="checkbox" id="agreeTerms">
+                            <input type="checkbox" id="agreeTerms" required>
                             <label for="agreeTerms" class="text">I agree to the terms and conditions</label>
                         </div>
                         <span class="validation-message" id="termsError"></span>
