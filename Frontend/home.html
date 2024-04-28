@@ -4,59 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Byte Foods</title>
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="popup.css"> 
+    <link rel="stylesheet" href="CSS/home.css">
+    <link rel="stylesheet" href="CSS/popup.css"> 
 </head>
 <body>
-    <section id="home" class="home">
-        <div class="left"></div>
-        <img src="./images/home image.png" alt="">
-        <div class="right">
-            <div class="top">
-                <p>
-                    Welcome to our dining place <br>
-                    Hope you enjoy your meal
-                </p>
-                <br>
-                <a href="#">
-                    Learn more...
-                </a>
-            </div>
-            <div class="middle">
-                <img src="./images/logo.png" alt="">
-            </div>
-            <div class="bottom">
-                <p>
-                    Book your <br> 
-                    table <span>now</span>
-                </p>
-                <!-- Button to open the popup -->
-                <button onclick="openPopup()">Login/Signup</button>
-            </div> 
-            <img src="./images/home footer.png" class="home-footer" alt="">           
-        </div>
-    </section>
 
-    <!-- Popup container -->
-    <div id="popup-container" class="popup-container">
-        <!-- Popup content -->
-        <div class="popup-content">
-            <!-- Close button -->
-            <span class="close" onclick="closePopup()">&times;</span>
+<header>
+    <div class="logo-container">
+        <img src="../images/logo.png" alt="One Byte Foods Logo" class="logo-image">
+    </div>
+    <nav class="navbar">
+        <a class="logo" href="#">One Byte Foods<span>.</span></a>
+        <ul class="menu-links">
+            <span id="close-menu-btn" class="material-symbols-outlined">close</span>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Sitting Space</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact us</a></li>
+        </ul>
+        <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
+    </nav>
+</header>
+
+<section class="hero-section">
+    <div class="background-image">
+    <div class="content">
+        <h2>With great dining experiences, <br>
+            Comes great memories.</h2>
+        <p>
+            <strong>Savor Every Bite: <br><br></strong>
+            Welcome to Our Friendly Dining Spot, 
+            Where Each Dish Tells a Story, Every Guest Feels Like Family, 
+            and Every Moment is Full of the Joy of Good Food and Great Company. <br><br>
+            <strong>Your Table Awaits, Ready to Make Your Dining Experience Unforgettable. <br></strong>
+        <button>Book Your Space Now</button>
+    </div>
+</div>
+
+</section>
+
+<!-- Popup container -->
+<div id="popup-container" class="popup-container">
+    <!-- Popup content -->
+    <div class="popup-content">
+        <!-- Close button -->
+        <span class="close" onclick="closePopup()">&times;</span>
+        
+        <!-- Left half with image -->
+        <div class="popup-image">
+            <img src="../images/popup.jpg" alt="Popup Image">
+        </div>
+        
+        <!-- Right half with login and signup functionality -->
+        <div class="popup-functionality">
+            <h2>Login & Signup</h2><br>
+            <p>Unlock exclusive features by logging in or signing up:</p>
+            <ul><br>
+                <li>Access member-only discounts</li>
+                <li>Receive special offers</li>
+                <li>Save your favorite spots</li>
+                <li>Get many discounts on reservation</li>
+            </ul><br><br>
+        <!-- Button to go to login/signup page -->
+        <div class="login-signup-buttons">
+                <button class="popup-button" onclick="window.location.href = 'login.html';">Already a member? Login</button>
+                <button class="popup-button" onclick="window.location.href = 'signup.html';">New here? Sign Up</button>
+        </div>
             
-            <!-- Popup message -->
-            <div class="popup-message">
-                <p>Become a member today and enjoy exclusive discounts, special offers, and more!</p>
-                
-                <!-- Button to go to login/signup page -->
-                <div class="login-signup-buttons">
-                    <button class="popup-button" onclick="window.location.href = 'login.html';">Already a member? Login</button>
-                    <button class="popup-button" onclick="window.location.href = 'signup.html';">New here? Sign Up</button>
-                </div>
-            </div>
         </div>
     </div>
+</div>
 
-    <script src="popup.js"></script> 
+
+<script src="JS/home.js"></script> 
+<script src="JS/popup.js"></script> 
+
 </body>
 </html>
