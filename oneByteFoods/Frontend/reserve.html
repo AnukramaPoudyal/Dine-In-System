@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Table Reservation</title>
+<style>
+    body {
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: black;
+    }
+
+    #left-content {
+        width: 45%;
+        padding: 20px;
+        color: rgb(9, 9, 9);
+    }
+
+    #right-content {
+        width: 45%;
+    }
+
+    form {
+        background-color: black;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    label {
+        color: white;
+    }
+
+    select, input[type="date"], input[type="time"], button {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        background-color: white;
+        color: black;
+    }
+
+    button {
+        background-color: #556B2F;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div id="left-content">
+    <h2>Table Reservation Form</h2>
+    <p>Welcome to our dining space!</p>
+    <p>We're excited to have you dine with us. Please use the form on the right to reserve your table.</p>
+    <!-- Add more lines as needed -->
+</div>
+
+<div id="right-content">
+    <form id="reservationForm" onsubmit="return validateForm()">
+        <label for="numberOfPeople">Number of People:</label>
+        <select id="numberOfPeople" name="numberOfPeople" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" min="08:00" max="23:00" required>
+
+        <label for="sittingSpace">Sitting Space:</label>
+        <select id="sittingSpace" name="sittingSpace" required>
+            <option value="indoor">Indoor</option>
+            <option value="outdoor">Outdoor</option>
+        </select>
+
+        <button type="submit">Reserve Table</button>
+    </form>
+</div>
+
+<script>
+function validateForm() {
+    var numberOfPeople = document.getElementById("numberOfPeople").value;
+    var date = document.getElementById("date").value;
+    var time = document.getElementById("time").value;
+    var sittingSpace = document.getElementById("sittingSpace").value;
+
+    // Simple validation
+    if (numberOfPeople === "" || date === "" || time === "" || sittingSpace === "") {
+        alert("All fields are required!");
+        return false;
+    }
+
+    // Additional validation can be added here, like date and time validation.
+    // You can also add more complex validation logic depending on your requirements.
+
+    return true;
+}
+</script>
+
+</body>
+</html>
