@@ -9,6 +9,7 @@ loginButton.addEventListener('click', () => {
     // Get email and password input values
     const email = emailInput.value.trim();
     let isValid = true;
+    let password;
 
     // Check if any field is empty
     if (email === "") {
@@ -19,7 +20,7 @@ loginButton.addEventListener('click', () => {
     }
 
     passwordInputs.forEach(passwordInput => {
-        const password = passwordInput.value.trim();
+        password = passwordInput.value.trim();
         if (password === "") {
             passwordInput.setCustomValidity("Please enter your password.");
             isValid = false;
@@ -30,8 +31,7 @@ loginButton.addEventListener('click', () => {
 
     // If all fields are filled, submit the form
     if (isValid) {
-        // Send HTTP POST request to login API endpoint
-        fetch('127.0.0.1:8000/login/', {
+        fetch('http://localhost:8000/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,8 +41,13 @@ loginButton.addEventListener('click', () => {
                 password: password
             })
         })
-        .then(response => response.json())
-        .then(data => {
+       .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+       .then(data => {
             if (data.message) {
                 // Redirect to home.html upon successful login
                 window.location.href = "home.html";
@@ -51,7 +56,7 @@ loginButton.addEventListener('click', () => {
                 alert("Can't login. Please check your email and password.");
             }
         })
-        .catch(error => {
+       .catch(error => {
             console.error('Error:', error);
             // Show alert for any error during login
             alert("An error occurred. Please try again later.");
