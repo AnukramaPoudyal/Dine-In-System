@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>OBF- Dine-In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988515/rosa-favicon.png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/popup.css">
+</head>
+<body class="stop-scroll">
+
+    <!-- Loader -->
+    <div class="loader-wrap">
+        <div class="loader">
+            <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
+        </div>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots">
+        <div class="active one" data-x="header"></div>
+        <div class="two" data-x=".recipes"></div>
+        <div class="three" data-x=".fixed-image"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: white; font-size: 24px; font-weight: bold;">OneByteFoods</a>
+            </div>
+
+            <div class="toggle">
+                <span class="first"></span>
+                <span class="middle"></span>
+                <span class="last"></span>
+            </div>
+            <div class="navigation-bar">
+                <ul>
+                    <li class="active"><a href="index.html">Home<span class="underline"></span></a></li>
+                    <li><a href="#">Reservations<span class="underline"></span></a></li>
+                    <li><a href="#">Menu<span class="underline"></span></a></li>
+                    <li><a href="#">About<span class="underline"></span></a></li>
+                    <li><a href="#">Sitting Space<span class="underline"></span></a></li>
+                    <li><a href="#">Contact<span class="underline"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="text">
+            <h2>Welcome</h2>
+            <h1>ONE BYTE FOODs</h1>
+            <div class="arrow">
+                <span class="left"></span>
+                <i class="fas fa-asterisk"></i>
+                <span class="right"></span>
+            </div>
+            <span>With great dining experiences, <br> Comes great memories.</span>
+            <div class="button"><button>Explore</button></div>
+        </div>
+        <svg class="svg-down" width="192" height="61" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="currentColor" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"></path></svg>
+        <div class="arrow-down"></div>
+    </header>
+
+    <!-- Popup container -->
+    <div id="popup-container" class="popup-container">
+        <!-- Popup content -->
+        <div class="popup-content">
+            <!-- Close button -->
+            <span class="close" onclick="closePopup()">&times;</span>
+
+            <!-- Left half with image -->
+            <div class="popup-image">
+                <img src="../images/popup.jpg" alt="Popup Image">
+            </div>
+
+            <!-- Right half with login and signup functionality -->
+            <div class="popup-functionality">
+                <h2>Login & Signup</h2><br>
+                <p>Unlock exclusive features by logging in or signing up:</p>
+                <ul>
+                    <li>Access member-only discounts</li>
+                    <li>Receive special offers</li>
+                    <li>Save your favorite spots</li>
+                    <li>Get many discounts on reservation</li>
+                </ul><br><br>
+                <!-- Button to go to login/signup page -->
+                <div class="login-signup-buttons">
+                    <button class="popup-button" onclick="window.location.href = 'login.html';">Already a member? Login</button>
+                    <button class="popup-button" onclick="window.location.href = 'signup.html';">New here? Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us -->
+    <div class="about-us">
+        <div class="text">
+            <h2>Get To Know</h2>
+            <h3>Our Story</h3>
+            <div><i class="fas fa-asterisk"></i></div>
+            <p>One Byte Foods is a multicultural restaurant offering homemade tastes from around the globe, right in the heart of Kathmandu. From Nepali, Indian, and Chinese to European and East Asian cuisine, we serve everything. Located amidst the vibrant streets of Kathmandu, our restaurant boasts glazed frontage on two sides, providing views of the bustling city.</p>
+            <div><a class="a-CTA" href="#">About Us</a></div>
+        </div>
+        <div class="image-container">
+            <div class="image image1">
+                <img src="https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988527/vertical-photo-1.jpg" alt="Food Photo">
+            </div>
+            <div class="image image2">
+                <img src="https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988532/vertical-photo-2.jpg" alt="Food Photo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipes -->
+    <div class="recipes">
+        <div class="image"></div>
+        <div class="text">
+            <h2>Beautiful</h2>
+            <h3>Spaces</h3>
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <div class="menu">
+        <div class="box-model">
+            <i class="fas fa-times fa-2x close"></i>
+            <div class="arrow">
+                <div class="arrow arrow-right"></div>
+                <div class="arrow arrow-left"></div>
+            </div>
+            <div class="box-image-container">
+                <div class="box-image">
+                    <img src="" alt="Food Photo">
+                </div>
+            </div>
+        </div>
+        <div class="menu-image-container">
+            <div class="image active">
+                <img src="https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988517/big-menu-thumb-1.jpg" alt="Food Photo">
+            </div>
+            <div class="image">
+                <img src="https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988526/big-menu-thumb-2.jpg" alt="Food Photo">
+            </div>
+            <div class="image">
+                <img src="https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988525/big-menu-thumb-4.jpg" alt="Food Photo">
+            </div>
+            <div class="image">
+                <img src="https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988524/big-menu-thumb-6.jpg" alt="Food Photo">
+            </div>
+        </div>
+        <div class="text">
+            <h2>Discover</h2>
+            <h3>Menu</h3>
+            <div><i class="fas fa-asterisk"></i></div>
+            <p>At One Byte Foods, explore our diverse menu inspired by global flavors. Enjoy a culinary adventure with dishes that change seasonally, ensuring freshness and variety. From appetizers to desserts, we offer something for every palate. Join us to experience a world of taste sensations.</p>
+            <div><a class="a-CTA" href="#">View The Full Menu</a></div>
+        </div>
+    </div>
+
+    <!-- Fixed Image -->
+    <div class="fixed-image">
+        <div class="text">
+            <h2>The Perfect</h2>
+            <h3>Blend</h3>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+
+    <!-- Reservation -->
+    <div class="reservation">
+        <div class="text">
+            <h2>Booking</h2>
+            <h3>Space</h3>
+            <div><i class="fas fa-asterisk"></i></div>
+            <p>At One Byte Foods, we guarantee an intimate and relaxed dining atmosphere, ensuring a memorable experience for both local and foreign guests. Reserve your table today for a culinary journey that promises something special every time.
+                <br><strong>Your Table Awaits, Ready to Make Your Dining Experience Unforgettable. <br></strong>
+            </p>
+            <div><a class="a-CTA" href="reserve.html">Make a Reservation</a></div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div class="image image1">
+            <img src="https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988518/bacon-1.jpg" alt="Food Photo">
+        </div>
+        <div class="image image2">
+            <img src="https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988518/bacon-2.jpg" alt="Food Photo">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="text">
+            <h2>ABOUT One Byte Foods</h2>
+            <div><i class="fas fa-asterisk"></i></div>
+            <p>Discover One Byte Foods: Where each meal is a story, and every table is an invitation. Join us for unforgettable flavors and effortless reservations.</p>
+        </div>
+        <div class="contact-container">
+            <div class="social-media">
+                <h3>Follow Along</h3>
+                <div class="links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="newsletter">
+                <h3>NewsLetter</h3>
+                <form method="post">
+                    <input type="email" name="email" placeholder="Type Your Email">
+                    <i class="fas fa-envelope"></i>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copy-Right -->
+    <div class="copyright">
+        <svg class="svg-up" width="192" height="61" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="#262526" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"></path></svg>
+        <i class="fas fa-angle-double-up arrow-up"></i>
+        <ul class="info">
+            <li>© One Byte Foods 2024</li>
+            <li>Naxal, Kathmandu</li>
+            <li>Tel: 01-5175156</li>
+            <li>Developed with hardwork by <a href="#">Group 2</a> Team</li>
+        </ul>
+        <ul class="CTA">
+            <li><a href="#">PERMISSIONS AND COPYRIGHT</a></li>
+            <li><a href="#">CONTACT THE TEAM</a></li>
+        </ul>
+    </div>
+
+    <!-- Scripts -->
+    <script src="JS/popup.js"></script>
+    <script src="JS/script.js"></script>
+
+</body>
+</html>
