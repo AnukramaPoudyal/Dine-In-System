@@ -1,8 +1,8 @@
 import json
-from django.http import JsonResponse # type: ignore
-from django.views.decorators.csrf import csrf_exempt # type: ignore
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime, timedelta
-import sample.user.models as usermodel # type: ignore
+import sample.user.models as usermodel
 
 @csrf_exempt
 def check_availability(request):
@@ -12,6 +12,9 @@ def check_availability(request):
         table_id = data.get('table_id')
         num_people = int(data.get('num_people'))
         booking_time_str = data.get('booking_time')
+
+        if num_people > 2:  # Check if the number of people exceeds 2
+            return JsonResponse({'error': 'Maximum of 2 people allowed for booking'}, status=400)
 
         try:
             booking_time = datetime.strptime(booking_time_str, '%Y-%m-%d %H:%M:%S')
@@ -29,8 +32,7 @@ def check_availability(request):
         if num_people > table.capacity:
             return JsonResponse({'error': 'Table capacity exceeded'}, status=400)
 
-        # Restaurant closing time (in 24-hour format)
-        closing_time = 23  # 11:00 PM
+        closing_time = 23  # Restaurant closing time (in 24-hour format)
         min_booking_time = booking_time + timedelta(hours=2.5)
         if min_booking_time.hour >= closing_time:
             return JsonResponse({'error': 'At the moment, there’s no online availability within 2.5 hours of closing time'}, status=400)
@@ -38,3 +40,4 @@ def check_availability(request):
         return JsonResponse({'message': 'Table is available'})
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+
