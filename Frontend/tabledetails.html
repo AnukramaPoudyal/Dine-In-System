@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Details</title>
-    <link rel="stylesheet" href="CSS/customerdetails.css">
+    <title>Table Details</title>
+    <link rel="stylesheet" href="CSS/tabledetails.css">
 </head>
 <body>
 
@@ -40,7 +40,7 @@
             </li>
             
 
-            <li>
+            <li class="active">
                 <a href="#">
                     <span class="icon">
                         <ion-icon name="restaurant-outline"></ion-icon>
@@ -108,31 +108,33 @@
 
         
             <!-- ================ Table Booking List ================= -->
-            <div class="customers">
-                <div class="customerDetails">
+            <div class="tables">
+                <div class="tableDetails">
                     <div class="cardHeader">
-                        <h2>Customer Details</h2><br>
+                        <h2>Table Details</h2><br>
                     </div>
     
-                    <table id="customerTable">
+                    <table id="tableTable">
                         <thead>
                             <tr><br><br>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Contact Number</th>
-                                <th>Password</th>
+                                <th>Full Name</th>
+                                <th>Date Booked</th>
+                                <th>Time Booked</th>
+                                <th>Table Number</th>
+                                <th>Occassion Type</th>
+                                <th>Number Of People</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
-                <tbody id="customerData">
-                    <!-- Customer details will be added dynamically by JavaScript -->
+                <tbody id="tableData">
+                    <!-- table details will be added dynamically by JavaScript -->
                 </tbody>
             </table>
         </div>
     </div>
 
     <!-- ====== ionicons ======= -->
-    <script src="JS/customerdetails.js"></script>
+    <script src="JS/tabledetails.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
