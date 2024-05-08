@@ -1,0 +1,97 @@
+/* Popup container styles */
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup content styles */
+.popup-content {
+  color: #556B2F;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  position: relative; /* Ensure close button position is relative to this container */
+  width: 80%; /* Adjust as needed */
+  max-width: 800px; /* Adjust as needed */
+}
+
+/* Close button styles */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #000000;
+  z-index: 999; /* Ensure the close button appears above other elements */
+}
+
+/* Popup image styles */
+.popup-image {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 10px 0 0 10px;
+}
+
+.popup-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Popup functionality styles */
+.popup-functionality {
+  flex: 1;
+  padding: 20px;
+}
+
+.popup-functionality h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.popup-functionality p {
+  margin-bottom: 20px;
+}
+
+.popup-functionality ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.popup-functionality ul li {
+  padding: 5px 0;
+}
+
+/* Button styles */
+.popup-button {
+  padding: 15px 15px; /* Increased padding */
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #556B2F;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup-button:hover {
+  background-color: darkgoldenrod;
+}
+
+.login-signup-buttons {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,121 @@
+[33mcommit c1623ec10fdba28411a2f7b3a2920d74224bcdc4[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Anukrama Poudyal <anukrama.paudel@alumni.sifal.deerwalk.edu>
+Date:   Sun Apr 28 21:39:20 2024 +0545
+
+    Merged remote changes into local branch
+
+[33mcommit ba9ea2bbd6f6c92a23d776e18930fe1900cd4027[m
+Author: Anukrama Poudyal <anukrama.paudel@alumni.sifal.deerwalk.edu>
+Date:   Sun Apr 14 16:22:24 2024 +0545
+
+    Frontend
+
+[33mcommit 183c936cc66ccc26ef2e4e0551d1d00e2722782f[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:18:44 2024 +0545
+
+    Delete signup.js
+
+[33mcommit 1e2a58e6deb6e17f4bb90b5b73e383de7e70def4[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:18:30 2024 +0545
+
+    Delete signup.html
+
+[33mcommit 53cc70b826e49b59db9be39694d65425e8fc04be[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:18:18 2024 +0545
+
+    Delete signup.css
+
+[33mcommit e95c138589a50d3573fdcc09f90eab77ac83b461[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:18:05 2024 +0545
+
+    Delete popup.js
+
+[33mcommit b196521e4824a78718a17cecc03e0949397f1ece[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:17:53 2024 +0545
+
+    Delete popup.css
+
+[33mcommit a247f50d33863052a44d108722aa86d49f2220ab[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:17:40 2024 +0545
+
+    Delete login.js
+
+[33mcommit 8059410e2b5850a0c4976ca1df7181f310558f08[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:17:16 2024 +0545
+
+    Delete login.html
+
+[33mcommit f4f040922c470878f41600c519973492f610946f[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:17:02 2024 +0545
+
+    Delete login.css
+
+[33mcommit efb0097a9e6c57eb144fa3eac9389ad01c1bd1f1[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:16:06 2024 +0545
+
+    Delete home.html
+
+[33mcommit 4f6eaaf35490e7cad1439230d41b296ca2a26cd4[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:15:53 2024 +0545
+
+    Delete home.css
+
+[33mcommit cf07eb88aa254b35af97b41b84b75c938b228ccf[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:15:40 2024 +0545
+
+    Delete forgot.html
+
+[33mcommit ec63dda41b6004b21f993ed3e4e0eb347e0fe8f7[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:15:27 2024 +0545
+
+    Delete forgot.css
+
+[33mcommit 702076f019592a6c168bb9d7cde3979fea0a1fc1[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 16:15:01 2024 +0545
+
+    Delete booking.html
+
+[33mcommit 454c27bc7e7e3e8a778219e96c362463ffefe568[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 14 13:01:48 2024 +0545
+
+    Delete README.md
+    
+    ss
+
+[33mcommit 47e03d9b0d81ee023f9780c8483b2c476d5edef5[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sat Apr 13 23:25:47 2024 +0545
+
+    Add files via upload
+
+[33mcommit b435199bc68b5215f8e102dcc7a31b4206c114cf[m
+Author: yugeenzsm <166278371+yugeenzsm@users.noreply.github.com>
+Date:   Thu Apr 11 15:03:50 2024 +0545
+
+    Add files via upload
+
+[33mcommit 70b1dc8b5289ce8a511c89b4c4f6e370b39dd098[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Mon Apr 8 16:57:04 2024 +0545
+
+    Add files via upload
+
+[33mcommit 40cf77916b9eda73ef9ff762d6dc603e6842939d[m
+Author: AnukramaPoudyal <87685960+AnukramaPoudyal@users.noreply.github.com>
+Date:   Sun Apr 7 09:37:56 2024 +0545
+
+    Initial commit

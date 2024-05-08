@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Select necessary elements from the DOM
+    const container = document.querySelector(".container");
     const pwShowHide = document.querySelectorAll(".showHidePw");
-    const signUp = document.querySelector(".signup-link");
-    const login = document.querySelector(".login-link");
+    const signUpLink = document.querySelector(".login-link");
     const submitBtn = document.querySelector(".submit-btn");
 
-    // Ensure all elements exist before adding event listeners
-    if (pwShowHide && signUp && login && submitBtn) {
+    // Ensure all required elements exist before adding event listeners
+    if (container && pwShowHide && signUpLink && submitBtn) {
         // Function to validate email format
         function validateEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -34,47 +35,34 @@ document.addEventListener("DOMContentLoaded", function() {
         pwShowHide.forEach(eyeIcon => {
             eyeIcon.addEventListener("click", () => {
                 const pwField = eyeIcon.previousElementSibling;
-                if (pwField.type === "password") {
-                    pwField.type = "text";
-                    eyeIcon.classList.replace("uil-eye-slash", "uil-eye");
-                } else {
-                    pwField.type = "password";
-                    eyeIcon.classList.replace("uil-eye", "uil-eye-slash");
-                }
+                pwField.type = pwField.type === "password"? "text" : "password";
+                eyeIcon.classList.toggle("uil-eye-slash");
+                eyeIcon.classList.toggle("uil-eye");
             });
         });
 
         // Event listener for signup link
-        signUp.addEventListener('click', () => {
+        signUpLink.addEventListener('click', () => {
             container.classList.add("active");
-        });
-
-        // Event listener for login link
-        login.addEventListener("click", () => {
-            container.classList.remove("active");
         });
 
         // Event listener for form submission
         submitBtn.addEventListener("click", (event) => {
             event.preventDefault(); 
-            const firstName = document.getElementById("first_name").value.trim();
-            const lastName = document.getElementById("last_name").value.trim();
-            const contactNumber = document.getElementById("contact_number").value.trim();
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const contactNumber = document.getElementById("contactNo").value.trim();
             const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value.trim();
 
+            // Validate form fields
             if (firstName === "" || lastName === "" || contactNumber === "" || email === "" || password === "") {
                 alert("Please fill in all the required fields.");
                 return;
             }
 
-            if (!validateName(firstName)) {
-                alert("First name must start with a capital letter.");
-                return;
-            }
-
-            if (!validateName(lastName)) {
-                alert("Last name must start with a capital letter.");
+            if (!validateName(firstName) ||!validateName(lastName)) {
+                alert("First and last names must start with a capital letter.");
                 return;
             }
 
@@ -93,6 +81,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
+            if (password!== confirmPassword) {
+                alert("Password and confirm password do not match.");
+                return;
+            }
+
+            // Construct signup data
             const signupData = {
                 first_name: firstName,
                 last_name: lastName,
@@ -101,24 +95,25 @@ document.addEventListener("DOMContentLoaded", function() {
                 password: password
             };
 
-            fetch('http://127.0.0.1:8000/signup/', {
+            // HTTP POST request to signup endpoint
+           fetch('http://127.0.0.1:8000/signup/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(signupData)
             })
-            .then(response => {
+           .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.text();
             })
-            .then(data => {
+           .then(data => {
                 console.log(data); // Output the response data
                 window.location.href = "home.html"; // Redirect to home.html after successful signup
             })
-            .catch(error => {
+           .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
         });
