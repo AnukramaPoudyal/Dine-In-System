@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent default form submission
 
         // Name validation
         const firstName = form.querySelector('#first_name').value.trim();
@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // If all validations pass, submit the form
-        form.submit();
+        // Redirect to payment.html
+        window.location.href = "payment.html";
     });
 });
 
@@ -45,4 +45,3 @@ function isValidPhoneNumber(phoneNumber) {
     const phoneRegex = /^\+?[0-9]{8,}$/;
     return phoneRegex.test(phoneNumber);
 }
-
