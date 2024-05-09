@@ -10,7 +10,7 @@
     <div class="container">
         <div class="booking-form">
             <h2>Book a Table</h2>
-            <form action="submit_booking.php" method="post">
+            <form>
                 <div class="form-group">
                     <label for="first_name">First Name</label>
                     <input type="text" id="first_name" name="first_name" required>
@@ -48,9 +48,14 @@
                     <input type="checkbox" id="text_updates" name="text_updates">
                     <label for="text_updates">Yes, I want to get text updates and reminders about my reservations.</label>
                 </div>
-                <button type="submit">Submit</button>
+                <div class="form-group">
+                    <!-- Cancel Booking button -->
+                    <button class="cancel-btn" onclick="cancelBooking()">Cancel Booking</button>
+                    <button type="submit">Book Table</button>
+                </div>      
             </form>
         </div>
+        
 
         <div class="booking-info">
             <h1>One Byte Foods</h1>
