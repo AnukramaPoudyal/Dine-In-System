@@ -1,6 +1,6 @@
-const container = document.querySelector(".container");
+// main.js
+
 const loginButton = document.querySelector(".input-field.button input[type='button']");
-const pwShowHide = document.querySelectorAll(".showHidePw");
 const emailInput = document.querySelector("input[type='email']");
 const passwordInputs = document.querySelectorAll(".password");
 
@@ -8,6 +8,12 @@ const passwordInputs = document.querySelectorAll(".password");
 function validatePassword(password) {
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     return passwordRegex.test(password);
+}
+
+// Function to validate email format
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
 // Event listener for login button click
@@ -19,90 +25,62 @@ loginButton.addEventListener('click', () => {
 
     // Check if any field is empty
     if (email === "") {
-        emailInput.setCustomValidity("Please enter your email.");
+        alert("Please enter your email.");
         isValid = false;
-    } else {
-        emailInput.setCustomValidity("");
+        return;
+    } else if (!validateEmail(email)) {
+        alert("Invalid email format! Must be in the format 'example@example.com'");
+        isValid = false;
+        return;
     }
 
     passwordInputs.forEach(passwordInput => {
         password = passwordInput.value.trim();
         if (password === "") {
-            passwordInput.setCustomValidity("Please enter your password.");
+            alert("Please enter your password.");
             isValid = false;
+            return;
         } else if (!validatePassword(password)) {
             alert("Password must be at least 8 characters long and contain a combination of letters and numbers.");
             isValid = false;
-        } else {
-            passwordInput.setCustomValidity("");
+            return;
         }
     });
 
     // If all fields are filled and password is valid, submit the form
     if (isValid) {
-        // Check if email and password match admin credentials
-        if (email === "admin@gmail.com" && password === "admindash123") {
-            window.location.href = "dashboard.html"; // Redirect to dashboard.html for admin
-        } else {
-            // Otherwise, proceed with regular login process
-            fetch('http://localhost:8000/login/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password
-                })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.message) {
-                    // Redirect to home.html upon successful login
-                    window.location.href = "home.html";
-                } else {
-                    // Login failed, display error message to the user
-                    alert("Can't login. Please check your email and password.");
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Show alert for any error during login
-                alert("An error occurred. Please try again later.");
-            });
-        }
-    } else {
-        // Show alert for incomplete form or invalid password
-        alert("Please fill in all the required fields and ensure the password meets the requirements.");
-    }
-});
+        const userData = {
+            email: email,
+            password: password
+        };
 
-// Toggle password visibility
-pwShowHide.forEach(eyeIcon => {
-    eyeIcon.addEventListener("click", () => {
-        const passwordField = eyeIcon.previousElementSibling;
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            eyeIcon.classList.replace("uil-eye-slash", "uil-eye");
-        } else {
-            passwordField.type = "password";
-            eyeIcon.classList.replace("uil-eye", "uil-eye-slash");
-        }
-    });
-});
-
-// Email format validation
-emailInput.addEventListener("input", function(event) {
-    const email = this.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        this.setCustomValidity("Invalid email format! Must be in the format 'example@example.com'");
-    } else {
-        this.setCustomValidity("");
+        // Send login data to backend
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.message) {
+                // Redirect to homepage upon successful login
+                window.location.href = "/homepage.html";
+            } else {
+                // Login failed, display error message to the user
+                alert("Can't login. Please check your email and password.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Show alert for any error during login
+            alert("An error occurred. Please try again later.");
+        });
     }
 });
