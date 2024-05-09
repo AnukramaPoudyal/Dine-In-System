@@ -54,9 +54,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const contactNumber = document.getElementById("contactNo").value.trim();
             const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value.trim();
+            const confirmPasswordField = document.getElementById("confirmPassword");
+            const confirmPassword = confirmPasswordField.value.trim(); // Add this line
+
 
             // Validate form fields
-            if (firstName === "" || lastName === "" || contactNumber === "" || email === "" || password === "") {
+            if (firstName === "" || lastName === "" || contactNumber === "" || email === "" || password === "" || confirmPassword === "") { // Update this line
                 alert("Please fill in all the required fields.");
                 return;
             }
@@ -81,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
-            if (password!== confirmPassword) {
+            if (password !== confirmPasswordField.value.trim()) { // Update this line
                 alert("Password and confirm password do not match.");
                 return;
             }
@@ -96,24 +99,25 @@ document.addEventListener("DOMContentLoaded", function() {
             };
 
             // HTTP POST request to signup endpoint
-           fetch('http://127.0.0.1:8000/signup/', {
+            fetch('/signup/', { // Update this line to match your signup endpoint
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken') // Add this line to include CSRF token
                 },
                 body: JSON.stringify(signupData)
             })
-           .then(response => {
+            .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.text();
+                return response.json();
             })
-           .then(data => {
+            .then(data => {
                 console.log(data); // Output the response data
-                window.location.href = "home.html"; // Redirect to home.html after successful signup
+                window.location.href = "homepage.html"; // Redirect to home.html after successful signup
             })
-           .catch(error => {
+            .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
         });
@@ -121,3 +125,19 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("One or more required elements not found in the DOM.");
     }
 });
+
+// Function to get CSRF token from cookies
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
