@@ -1,3 +1,4 @@
+/* CSS for container and its children */
 body {
     background-color: #556B2F;
 }
@@ -50,17 +51,34 @@ textarea,
     box-sizing: border-box;
 }
 
-button[type="submit"] {
-    display: block; /* Display the button as a block element */
-    margin: 0 auto; /* Center the button horizontally */
+/* CSS for submit button */
+.booking-form button[type="submit"] {
     background-color: #556B2F;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: calc(50% - 10px);
+    float: left; /* Align to the left */
 }
 
-button[type="submit"]:hover {
+.booking-form button[type="submit"]:hover {
+    background-color: darkgoldenrod;
+}
+
+/* CSS for cancel button */
+.booking-form .cancel-btn {
+    background-color: #556B2F;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: calc(50% - 10px);
+    float: right; /* Align to the right */
+}
+
+.booking-form .cancel-btn:hover {
     background-color: darkgoldenrod;
 }
