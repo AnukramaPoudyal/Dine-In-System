@@ -1,5 +1,8 @@
 from django.db import models
 from django.conf import settings
+from datetime import datetime
+
+
 
 class User(models.Model):
   firstname = models.CharField(max_length=255)
@@ -8,17 +11,32 @@ class User(models.Model):
   password = models.CharField(max_length=255)
   contact = models.CharField(max_length=255, default='')
 
-class Registration(models.Model):
-    # ForeignKey to link to a User who made the registration
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+class Reservation(models.Model):
+    # ForeignKey to link to a User who made the reservation
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    firstname = models.CharField(max_length=255,default='')
+    lastname = models.CharField(max_length=255,default='')
     occasion_type = models.CharField(max_length=50)  # E.g., Birthday, Wedding
-    number_of_people = models.IntegerField()
-    date_time = models.DateTimeField()  # Date and time of the reservation
+    number_of_people = models.IntegerField(default=1)
+    SITTING_CHOICES = [
+        ('indoor', 'Indoor'),
+        ('outdoor', 'Outdoor'),
+    ]
+    sitting_space = models.CharField(max_length=7, choices=SITTING_CHOICES,default='')
+    date_time = models.DateTimeField(blank=True, null=True)  # Date and time of the reservation
     STATUS_CHOICES = [
         ('confirm', 'Confirm'),
         ('cancel', 'Cancel'),
     ]
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='confirm')
-
-    def __str__(self):
-        return f"{self.occasion_type} for {self.user.firstname} on {self.date_time.strftime('%Y-%m-%d %H:%M')}"
+    
+    def is_valid_datetime(datetime_str):
+     try:
+         # Parse the datetime string
+         datetime_obj = datetime.strptime(datetime_str, '%Y-%m-%d %H:%M:%S')
+         # Optionally, you can check if the datetime is in the future to ensure it's not a past datetime
+         if datetime_obj < timezone.now():
+             return False
+         return True
+     except ValueError:
+         return False
