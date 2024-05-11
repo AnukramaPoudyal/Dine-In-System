@@ -78,59 +78,81 @@ def dashboard(request):
     # Return the data to the template
     return render(request, 'dashboard.html', {'users': users})
 
-# yugeen's registration part
+# yugeen's reservation part
 @csrf_exempt
-def add_registration(request):
+def add_reservation(request):
     if request.method == "POST":
-        # Extract data from POST request
-        email = request.POST.get("email")  # Email of the user creating the reservation
-        user = usermodel.User.objects.filter(email=email).first()
+        try:
+            # Extract email from POST request and strip whitespace
+            data = json.loads(request.body)
+            print(data)
+            email = data.get("email", "").strip()  # Default to empty string if None
 
-        if not user:
-            return JsonResponse({"error": "User not found"}, status=404)
+            if not email:
+                logger.info("Received POST request with email: %s", email)  # Log the email for debugging
+                return JsonResponse({"error": "Email is required"}, status=400)
 
-        occasion_type = request.POST.get("occasion_type")
-        number_of_people = int(request.POST.get("number_of_people"))
-        date_time_str = request.POST.get("date_time")  # Expected in ISO 8601 format
-        date_time = datetime.datetime.fromisoformat(date_time_str)
+            # Retrieve the user by email
+            user = usermodel.User.objects.filter(email=email).first()
+            print(user)
+            if not user:
+                return JsonResponse({"error": "User not found"}, status=404)
 
-        # Create a new registration
-        registration = usermodel.Registration(
-            user=user,
-            occasion_type=occasion_type,
-            number_of_people=number_of_people,
-            date_time=date_time,
-            status="confirm",  # Default to confirm
-        )
+            # Get other required data from POST request
+            occasion_type = data.get("occasion_type", "").strip()
+            number_of_people = int(data.get("number_of_people"))
+            date_time_str = data.get("date_time")
+            print(occasion_type, number_of_people, date_time_str)
+            # Convert date_time_str to a valid datetime
+            date_time = datetime.datetime.fromisoformat(date_time_str)
+            sitting_space = data.get("sitting_space", "").strip()
+            # Create and save a new reservation
+            reservation = usermodel.Reservation(
+                user=user,
+                occasion_type=occasion_type,
+                number_of_people=number_of_people,
+                sitting_space=1,
+                date_time=date_time,
+                status="confirm",  # Default to confirm
+            )
 
-        registration.save()  # Save to database
+            reservation.save()  # Save to database
 
-        return JsonResponse({"message": "Registration successful!"})
+            return JsonResponse({"message": "Reservation successful!"}, status=201)
 
-    return JsonResponse({"error": "Invalid request method"}, status=400)
+        except ValueError:
+            return JsonResponse({"error": "Invalid data format1"}, status=400)
 
-# New view for listing registrations
+        except Exception as e:
+            print("Error adding reservation: %s", e)
+            return JsonResponse({"error": "An unexpected error occurred"}, status=500)
+
+    return JsonResponse({"error": "Invalid request method2"}, status=405)    
+    
+# New view for listing reservations
 @csrf_exempt
-def list_registrations(request):
+def list_reservations(request):
     if request.method == "GET":
         email = request.GET.get("email")
         user = usermodel.User.objects.filter(email=email).first()
-
+        
+        print(email)
+        print(usermodel.User.objects.filter(email=email).first())
         if not user:
             return JsonResponse({"error": "User not found"}, status=404)
 
-        registrations = usermodel.Registration.objects.filter(user=user)
+        reservations = usermodel.Reservation.objects.filter(user=user)
         result = [
             {
                 "occasion_type": reg.occasion_type,
                 "number_of_people": reg.number_of_people,
-                "date_time": reg.date_time.strftime("%Y-%m-%d %H:%M"),
+                # "date_time": reg.date_time.strftime("%Y-%m-%d %H:%M"),
                 "status": reg.status,
             }
-            for reg in registrations
+            for reg in reservations
         ]
 
-        return JsonResponse({"registrations": result})
+        return JsonResponse({"reservations": result})
 
     return JsonResponse({"error": "Invalid request method"}, status=400)
 
