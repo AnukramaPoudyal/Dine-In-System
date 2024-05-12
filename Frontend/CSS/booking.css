@@ -1,4 +1,10 @@
-/* CSS for container and its children */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/*Start Global*/
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
     background-color: #556B2F;
 }
