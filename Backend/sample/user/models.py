@@ -56,3 +56,26 @@ class Reservation(models.Model):
             return True
         except ValueError:
             return False
+
+class PaymentOption(models.Model):
+    PAYMENT_METHOD_CHOICES = [
+        ('CARD', 'Card Payment'),
+        ('ONLINE', 'Online Payment')
+    ]
+    method = models.CharField(max_length=10, choices=PAYMENT_METHOD_CHOICES)
+    card_number = models.CharField(max_length=16, blank=True, null=True)
+    expiry_date = models.DateField(blank=True, null=True)
+    cvv = models.CharField(max_length=4, blank=True, null=True)
+    online_method = models.CharField(max_length=20, choices=[
+        ('MOBILE_BANKING', 'Mobile Banking'),
+        ('ESEWA', 'eSewa'),
+        ('KHALTI', 'Khalti')
+    ], blank=True, null=True)
+
+    def __str__(self):
+        if self.method == 'CARD':
+            return f"Card Payment - {self.card_number}"
+        elif self.method == 'ONLINE':
+            return f"Online Payment - {self.get_online_method_display()}"
+        else:
+            return "Unknown Payment Method"
