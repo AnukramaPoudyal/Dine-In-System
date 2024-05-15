@@ -376,3 +376,57 @@ def delete_reservation(request):
             return JsonResponse({"error": "An unexpected error occurred"}, status=500)
 
     return JsonResponse({"error": "Invalid request method"}, status=405)
+
+@csrf_exempt
+def add_payment(request):
+    if request.method == "POST":
+        try:
+            # Extract email from POST request and strip whitespace
+            data = json.loads(request.body)
+            print(data)
+            email = data.get("email", "").strip()  # Default to empty string if None
+
+            if not email:
+                return JsonResponse({"error": "Email is required"}, status=400)
+
+            # Retrieve the user by email
+            user = usermodel.User.objects.filter(email=email).first()
+            # print(user)
+            if not user:
+                return JsonResponse({"error": "User not found"}, status=404)
+            
+            # Combine first name and last name to create customer name
+            customer_name = f"{user.firstname} {user.lastname}"
+
+            # Get other required data from POST request
+            table_number = data.get("table_number")
+            order_details = data.get("order_details", "").strip()
+            total_price = float(data.get("total_price"))
+            payment_method = data.get("payment_method", "").strip()
+            status = data.get("status", "").strip()
+
+            # Create and save a new payment
+            payment = usermodel.PaymentOption(
+                user=user,
+                customer_name=customer_name,
+                table_number=table_number,
+                order_details=order_details,
+                total_price=total_price,
+                payment_method=payment_method,
+                status=status
+            )
+
+            payment.save()  # Save to database
+
+            return JsonResponse({"message": "Payment details added successfully!"}, status=201)
+
+        except ValueError:
+            return JsonResponse({"error": "Invalid data format"}, status=400)
+
+        except Exception as e:
+            print("Error adding payment details: %s", e)
+            return JsonResponse({"error": "An unexpected error occurred"}, status=500)
+
+    return JsonResponse({"error": "Invalid request method"}, status=405)
+
+
