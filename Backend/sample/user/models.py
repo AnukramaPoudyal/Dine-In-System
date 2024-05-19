@@ -17,7 +17,8 @@ class DineTable(models.Model):
         ("indoor", "Indoor"),
         ("outdoor", "Outdoor"),
     ]
-    sitting_space = models.CharField(max_length=7, choices=SITTING_CHOICES, default="")
+    sitting_space = models.CharField(
+        max_length=7, choices=SITTING_CHOICES, default="")
     max_people = models.IntegerField()
 
 
@@ -36,7 +37,8 @@ class Reservation(models.Model):
         ("indoor", "Indoor"),
         ("outdoor", "Outdoor"),
     ]
-    sitting_space = models.CharField(max_length=7, choices=SITTING_CHOICES, default="")
+    sitting_space = models.CharField(
+        max_length=7, choices=SITTING_CHOICES, default="")
     date_time = models.DateTimeField(
         blank=True, null=True
     )  # Date and time of the reservation
@@ -44,7 +46,8 @@ class Reservation(models.Model):
         ("confirm", "Confirm"),
         ("cancel", "Cancel"),
     ]
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="confirm")
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default="confirm")
 
     def is_valid_datetime(datetime_str):
         try:
@@ -56,26 +59,3 @@ class Reservation(models.Model):
             return True
         except ValueError:
             return False
-
-class PaymentOption(models.Model):
-    PAYMENT_METHOD_CHOICES = [
-        ('CARD', 'Card Payment'),
-        ('ONLINE', 'Online Payment')
-    ]
-    method = models.CharField(max_length=10, choices=PAYMENT_METHOD_CHOICES)
-    card_number = models.CharField(max_length=16, blank=True, null=True)
-    expiry_date = models.DateField(blank=True, null=True)
-    cvv = models.CharField(max_length=4, blank=True, null=True)
-    online_method = models.CharField(max_length=20, choices=[
-        ('MOBILE_BANKING', 'Mobile Banking'),
-        ('ESEWA', 'eSewa'),
-        ('KHALTI', 'Khalti')
-    ], blank=True, null=True)
-
-    def __str__(self):
-        if self.method == 'CARD':
-            return f"Card Payment - {self.card_number}"
-        elif self.method == 'ONLINE':
-            return f"Online Payment - {self.get_online_method_display()}"
-        else:
-            return "Unknown Payment Method"
