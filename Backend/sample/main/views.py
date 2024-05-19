@@ -131,7 +131,22 @@ def dashboard(request):
     return JsonResponse(user_list, safe=False)
 
 
+@csrf_exempt
+def get_user_reservation(request):
+    user_reservations = usermodel.Reservation.objects.all()
+    data = []
+    for reservation in user_reservations:
+        data.append({
+            'occassion_type': reservation.occassion_type,
+            'status': reservation.status,
+            # Add other fields here
+        })
+    # Return the list of users as a JSON response
+    return JsonResponse(data, safe=False)
+
 # yugeen's reservation part
+
+
 @csrf_exempt
 def find_reservation(request):
     if request.method == "POST":
@@ -139,7 +154,9 @@ def find_reservation(request):
             # Extract email from POST request and strip whitespace
             data = json.loads(request.body)
             print(data)
-            email = data.get("email", "").strip()  # Default to empty string if None
+
+            # Default to empty string if None
+            email = data.get("email", "").strip()
 
             if not email:
                 return JsonResponse({"error": "Email is required"}, status=400)
@@ -161,13 +178,19 @@ def find_reservation(request):
 
             selectedTable = dineTable.first()
             print(selectedTable)
+
             # Get other required data from POST request
-            occasion_type = data.get("occasion_type", "").strip()
+            occasion_type = data.get("occassion", "").strip()
             date_time_str = data.get("date_time")
             print(occasion_type, number_of_people, date_time_str)
+
             # Convert date_time_str to a valid datetime
-            date_time = datetime.datetime.strptime(date_time_str, "%Y-%m-%d")
+            date_time = datetime.datetime.strptime(
+                date_time_str, "%Y-%m-%d %H:%M:%S")
             sitting_space = data.get("sitting_space", "").strip()
+
+            print(date_time)
+            print(sitting_space)
 
             # add logic if any table is empty for the time or not
             table_present = False
@@ -183,13 +206,15 @@ def find_reservation(request):
                 else:
                     print("table is booked")
 
+            print(table_present)
+
             if not table_present:
                 return JsonResponse({"error": "All tables are booked"}, status=404)
 
             return JsonResponse({"message": "Table found!"}, status=201)
 
         except ValueError:
-            return JsonResponse({"error": "Invalid data format"}, status=400)
+            return JsonResponse({"error": ValueError}, status=400)
 
         except Exception as e:
             print("Error adding reservation: %s", e)
@@ -226,11 +251,13 @@ def is_valid_email(email):
 @csrf_exempt
 def add_reservation(request):
     if request.method == "POST":
+
         try:
             # Extract email from POST request and strip whitespace
             data = json.loads(request.body)
             print(data)
-            email = data.get("email", "").strip()  # Default to empty string if None
+            # Default to empty string if None
+            email = data.get("email", "").strip()
 
             if not email:
                 return JsonResponse({"error": "Email is required"}, status=400)
@@ -242,23 +269,37 @@ def add_reservation(request):
                 return JsonResponse({"error": "User not found"}, status=404)
 
             number_of_people = int(data.get("number_of_people"))
+            print(number_of_people)
 
             dineTable = usermodel.DineTable.objects.filter(
                 max_people__gte=number_of_people
             )
             print(dineTable)
+
             if not dineTable.exists():
                 return JsonResponse({"error": "Table not found"}, status=404)
 
             selectedTable = dineTable.first()
             print(selectedTable)
+
             # Get other required data from POST request
-            occasion_type = data.get("occasion_type", "").strip()
+            occasion_type = data.get("occassion", "").strip()
             date_time_str = data.get("date_time")
             print(occasion_type, number_of_people, date_time_str)
+
             # Convert date_time_str to a valid datetime
-            date_time = datetime.datetime.strptime(date_time_str, "%Y-%m-%d")
+            date_time = datetime.datetime.strptime(
+                str(date_time_str), "%Y-%m-%d %H:%M:%S")
             sitting_space = data.get("sitting_space", "").strip()
+
+            print(date_time)
+            print(sitting_space)
+            print(occasion_type)
+            print("************")
+
+            sitting_space_code = 1
+            if sitting_space == "Outdoor":
+                sitting_space_code = 2
 
             # add logic if any table is empty for the time or not
             table_present = False
@@ -283,7 +324,7 @@ def add_reservation(request):
                 table=selectedTable,
                 occasion_type=occasion_type,
                 number_of_people=number_of_people,
-                sitting_space=1,
+                sitting_space=sitting_space_code,
                 date_time=date_time,
                 status="confirm",  # Default to confirm
             )
@@ -337,6 +378,8 @@ def list_all_reservations(request):
         reservations = usermodel.Reservation.objects.all()
         result = [
             {
+                "customer_name": reg.user.firstname+" "+reg.user.lastname,
+                "customer_email": reg.user.email,
                 "occasion_type": reg.occasion_type,
                 "number_of_people": reg.number_of_people,
                 "date_time": reg.date_time.strftime("%Y-%m-%d %H:%M"),
@@ -348,85 +391,3 @@ def list_all_reservations(request):
         return JsonResponse({"reservations": result})
 
     return JsonResponse({"error": "Invalid request method"}, status=400)
-
-@csrf_exempt
-def delete_reservation(request):
-    if request.method == "POST":
-        try:
-            # Extract reservation ID from POST request
-            data = json.loads(request.body)
-            reservation_id = data.get("reservation_id")
-
-            if not reservation_id:
-                return JsonResponse({"error": "Reservation ID is required"}, status=400)
-
-            # Check if the reservation exists
-            reservation = usermodel.Reservation.objects.filter(id=reservation_id).first()
-
-            if not reservation:
-                return JsonResponse({"error": "Reservation not found"}, status=404)
-
-            # Delete the reservation
-            reservation.delete()
-
-            return JsonResponse({"message": "Reservation deleted successfully!"}, status=200)
-
-        except Exception as e:
-            print("Error deleting reservation: %s" % e)
-            return JsonResponse({"error": "An unexpected error occurred"}, status=500)
-
-    return JsonResponse({"error": "Invalid request method"}, status=405)
-
-@csrf_exempt
-def add_payment(request):
-    if request.method == "POST":
-        try:
-            # Extract email from POST request and strip whitespace
-            data = json.loads(request.body)
-            print(data)
-            email = data.get("email", "").strip()  # Default to empty string if None
-
-            if not email:
-                return JsonResponse({"error": "Email is required"}, status=400)
-
-            # Retrieve the user by email
-            user = usermodel.User.objects.filter(email=email).first()
-            # print(user)
-            if not user:
-                return JsonResponse({"error": "User not found"}, status=404)
-            
-            # Combine first name and last name to create customer name
-            customer_name = f"{user.firstname} {user.lastname}"
-
-            # Get other required data from POST request
-            table_number = data.get("table_number")
-            order_details = data.get("order_details", "").strip()
-            total_price = float(data.get("total_price"))
-            payment_method = data.get("payment_method", "").strip()
-            status = data.get("status", "").strip()
-
-            # Create and save a new payment
-            payment = usermodel.PaymentOption(
-                user=user,
-                customer_name=customer_name,
-                table_number=table_number,
-                order_details=order_details,
-                total_price=total_price,
-                payment_method=payment_method,
-                status=status
-            )
-
-            payment.save()  # Save to database
-
-            return JsonResponse({"message": "Payment details added successfully!"}, status=201)
-
-        except ValueError:
-            return JsonResponse({"error": "Invalid data format"}, status=400)
-
-        except Exception as e:
-            print("Error adding payment details: %s", e)
-            return JsonResponse({"error": "An unexpected error occurred"}, status=500)
-
-    return JsonResponse({"error": "Invalid request method"}, status=405)
-
-
