@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Reservation</title>
+
+    <style>
+        .body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="datetime-local"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+input[type="submit"],
+.button-container button {
+  width: calc(50% - 5px); /* Adjusted width to allow space between buttons */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #556B2F;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  float: center; /* Make buttons align side by side */
+}
+
+input[type="submit"]:hover,
+.button-container button:hover {
+  background-color: darkgoldenrod;
+}
+
+.button-container {
+  text-align: right;
+  overflow: hidden; /* Clear float */
+}
+
+.button-container button {
+  margin-right: 10px; /* Added margin between buttons */
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Add Reservation</h1>
+    <form id="reservationForm" onsubmit="addReservation(event)">
+        <!-- Add form fields for reservation details -->
+        <label for="name">Customer Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="dateTime">Date & Time:</label>
+        <input type="datetime-local" id="dateTime" name="dateTime" required><br><br>
+
+        <label for="tableNumber">Table Number:</label>
+        <input type="number" id="tableNumber" name="tableNumber" required><br><br>
+
+        <label for="occasionType">Occasion Type:</label>
+        <input type="text" id="occasionType" name="occasionType" required><br><br>
+
+        <label for="numberOfPeople">Number Of People:</label>
+        <input type="number" id="numberOfPeople" name="numberOfPeople" required><br><br>
+
+        <label for="sittingSpace">Sitting Space:</label>
+        <input type="text" id="sittingSpace" name="sittingSpace" required><br><br>
+
+        <input type="submit" value="Submit">
+
+<!-- Button to redirect to tabledetails.html -->
+    <div class="button-container">
+        <button type="button" onclick="redirectToTableDetails()" class="button">Go to Table Details</button>
+    </div>
+
+    </form>
+
+    <script>
+    // Function to add a new reservation
+    function addReservation(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Retrieve form data
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const dateTime = document.getElementById("dateTime").value.trim();
+        const tableNumber = document.getElementById("tableNumber").value.trim();
+        const occasionType = document.getElementById("occasionType").value.trim();
+        const numberOfPeople = document.getElementById("numberOfPeople").value.trim();
+        const sittingSpace = document.getElementById("sittingSpace").value.trim();
+        const submissionTimestamp = new Date().toLocaleString(); // Get submission timestamp
+
+        // Validate input data
+        if (!name || !email || !dateTime || !tableNumber || !occasionType || !numberOfPeople || !sittingSpace) {
+            alert("Please fill in all the required fields.");
+            return;
+        }
+
+        // Perform additional validation for email, date, time, and other fields if needed
+
+        // Perform validation for email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Invalid email format.");
+            return;
+        }
+
+        // Perform submission logic (you can perform AJAX request here)
+
+        // Display success message
+        alert("Reservation added successfully!");
+
+        // Optional: Redirect to another page after successful submission
+        // window.location.href = "confirmation_page.html";
+
+        // Optional: Add the reservation to the main table in tabledetails.html
+        // You can store the reservation data in localStorage or sessionStorage and retrieve it in tabledetails.html
+        const reservationData = {
+            name: name,
+            email: email,
+            dateTime: dateTime,
+            tableNumber: tableNumber,
+            occasionType: occasionType,
+            numberOfPeople: numberOfPeople,
+            sittingSpace: sittingSpace,
+            submissionTimestamp: submissionTimestamp
+        };
+
+        // Store reservation data in localStorage
+        localStorage.setItem("reservationData", JSON.stringify(reservationData));
+    }
+
+    // Function to redirect to tabledetails.html
+    function redirectToTableDetails() {
+        window.location.href = "tabledetails.html";
+    }
+    </script>
+</body>
+</html>

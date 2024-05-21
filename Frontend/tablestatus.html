@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Status</title>
+    <style>
+        /* Add CSS styles for better presentation */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Set a background color */
+        }
+        .container {
+            width: 300px; /* Set width of the container */
+            padding: 10px; /* Add padding for spacing */
+            border: 1px solid #ccc; /* Add border */
+            border-radius: 5px; /* Add border radius */
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .available {
+            background-color: rgb(15, 233, 15);
+        }
+        .booked {
+            background-color: rgb(236, 13, 13);
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #556B2F;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkgoldenrod;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Table Status</h1>
+        <ul id="tableStatus">
+            <!-- Table status will be dynamically added here -->
+        </ul>
+
+        <!-- Button to go back to tabledetailes.html -->
+        <button onclick="goBack()">Go Back to Table Details</button>
+    </div>
+
+    <script>
+        // Sample table status data (replace with actual data from your system)
+        const tableStatusData = [
+            { tableNumber: 1, status: "Available" },
+            { tableNumber: 2, status: "Booked" },
+            { tableNumber: 3, status: "Available" },
+            { tableNumber: 4, status: "Booked" },
+            // Add more table status data as needed
+        ];
+
+        // Function to display table status
+        function displayTableStatus() {
+            const tableStatusList = document.getElementById("tableStatus");
+
+            // Clear previous table status
+            tableStatusList.innerHTML = "";
+
+            // Loop through table status data and create list items
+            tableStatusData.forEach(data => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `Table ${data.tableNumber}: ${data.status}`;
+                listItem.classList.add(data.status.toLowerCase()); // Add appropriate class based on status
+                tableStatusList.appendChild(listItem);
+            });
+        }
+
+        // Call the function to display table status
+        displayTableStatus();
+
+        // Function to go back to tabledetailes.html
+        function goBack() {
+            window.location.href = "tabledetails.html";
+        }
+    </script>
+</body>
+</html>

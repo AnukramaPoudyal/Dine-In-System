@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://res.cloudinary.com/dxc6teqec/image/upload/v1714711896/background_1_ra1gcg.jpg');
+      background-size: cover;
+    }
+
+    #restaurantHeading {
+      text-align: center;
+      color: #0d0d0d;
+      padding: 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 9999;
+    }
+
+    #motto {
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #f3f1f1;
+    }
+
+    #thankYouBox {
+      position: fixed;
+      top: 100px; /* Adjust the position as needed */
+      left: 0;
+      width: 100%;
+      height: calc(100% - 100px); /* Adjust for the heading height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .cloud {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    .cloud h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 32px;
+    }
+
+    .cloud p {
+      font-size: 18px;
+    }
+
+    .rating {
+      margin-top: 20px;
+    }
+
+    .star {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .star:hover,
+    .star.active {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <div id="restaurantHeading">
+    <h1>One Byte Foods</h1><br><br>
+    <p id="motto">"With great dining experiences, <br> Comes great memories."</p>
+  </div>
+  <div id="thankYouBox">
+    <div class="cloud">
+      <h1>Thank You!</h1>
+      <p>We're delighted to serve you today. Your table has been booked with your special order. Please take a moment to rate your experience:</p>
+      <div class="rating">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+      </div>
+      <p>Thank you for choosing us! We hope to see you again soon.</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const stars = document.querySelectorAll(".star");
+
+      stars.forEach(star => {
+        star.addEventListener("mouseover", function() {
+          const value = this.getAttribute("data-value");
+          highlightStars(value);
+        });
+
+        star.addEventListener("mouseleave", function() {
+          const activeStars = document.querySelectorAll(".star.active");
+          if (activeStars.length === 0) {
+            highlightStars(0);
+          } else {
+            const lastActive = activeStars[activeStars.length - 1];
+            const value = lastActive.getAttribute("data-value");
+            highlightStars(value);
+          }
+        });
+
+        star.addEventListener("click", function() {
+          const value = this.getAttribute("data-value");
+          setRating(value);
+        });
+      });
+
+      function highlightStars(value) {
+        stars.forEach(star => {
+          if (star.getAttribute("data-value") <= value) {
+            star.classList.add("active");
+          } else {
+            star.classList.remove("active");
+          }
+        });
+      }
+
+      function setRating(value) {
+        alert("Thank you for your rating: " + value + " stars!");
+        // You can send this rating to your server for further processing
+
+        // Redirect to homepage.html after a delay
+        setTimeout(() => {
+          window.location.href = 'homepage.html';
+        }, 3000); // 3-second delay before redirecting
+      }
+    });
+  </script>
+</body>
+</html>

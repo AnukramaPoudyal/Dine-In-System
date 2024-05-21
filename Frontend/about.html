@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - One Byte Foods</title>
+  <link rel="stylesheet" href="CSS/about.css">
+</head>
+<body>
+  <!-- Video background -->
+  <video id="videoBackground" autoplay muted loop>
+    <source src="https://res.cloudinary.com/dxc6teqec/video/upload/v1715824312/4932488_person_people_indoors_3840x2160_klpeic.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="homepage.html">OneByteFoods</a>
+              </div>
+        
+            <div class="navigation-bar">
+                <ul>
+                    <li><a href="homepage.html">Home<span class="underline"></span></a></li>
+                    <li><a href="reserve.html">Reservations<span class="underline"></span></a></li>
+                    <li><a href="menu.html">Menu<span class="underline"></span></a></li>
+                    <li class="active"><a href="about.html">About<span class="underline"></span></a></li>
+                    <li><a href="sitting.html">Sitting Space<span class="underline"></span></a></li>
+                    <li><a href="contact.html">Contact<span class="underline"></span></a></li>
+                </ul>
+            </div>
+        
+            <div class="toggle">
+                <span class="first"></span>
+                <span class="middle"></span>
+                <span class="last"></span>
+            </div>
+        </nav>
+        
+  <div id="restaurantHeading">
+    <p id="motto">"With great dining experiences, <br> Comes great memories."</p>
+  </div>
+
+  <div id="aboutUsContent">
+    <div class="section">
+      <div class="text" style="order: 2;">
+        <h2>About Us</h2>
+        <p>One Byte Foods is a multicultural restaurant offering homemade tastes from around the globe, right in the heart of Kathmandu. 
+            From Nepali, Indian, and Chinese to European and East Asian cuisine, we serve everything. 
+            Located amidst the vibrant streets of Kathmandu, our restaurant boasts glazed frontage on two sides, providing views of the bustling city.</p>
+        <p>Discover One Byte Foods: Where each meal is a story, and every table is an invitation. Join us for unforgettable flavors and effortless reservations.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="text">
+        <h2>Our Chef</h2>
+        <p>Meet our talented chef, who brings creativity and expertise to every dish. 
+            With a passion for culinary innovation and a dedication to using fresh, seasonal ingredients, our chef crafts delightful creations that will tantalize your taste buds.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="text" style="order: 2;">
+        <h2>Our Philosophy</h2>
+        <p>At One Byte Foods, we believe that great food brings people together. 
+            That's why we're committed to creating a welcoming environment where friends and family can gather to enjoy delicious meals and create lasting memories. 
+            Our philosophy is simple: good food, good company, good times.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="text">
+        <h2>Our Location</h2>
+        <p>You can find us conveniently located in the heart of Kathmandu. 
+            Whether you're exploring the area or looking for a cozy spot to dine, we invite you to visit us and experience the flavors of One Byte Foods.</p>
+      </div>
+    </div>
+  </div>
+<!-- Footer -->
+<footer>  
+    <!-- Copy-Right -->
+    <div class="copyright">
+      <ul class="info1">
+        <li>© One Byte Foods 2024</li>
+        <li><a href="homepage.html">PERMISSIONS AND COPYRIGHT</a></li>
+      </ul>
+      <ul class="info2">
+        <li>Naxal, Kathmandu</li>
+        <li>Tel: 01-5175156</li>
+      </ul>
+      <ul class="info3">
+        <li><a href="contact.html">CONTACT THE TEAM</a></li>
+        <li>Developed with hardwork by <a href="#">Group 2</a> Team</li>
+      </ul>
+    </div>
+</footer> 
+
+</body>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const navToggle = document.querySelector("header .toggle");
+    const navNavigationBar = document.querySelector("header .navigation-bar");
+
+    // toggle navigation bar on click
+    navToggle.addEventListener("click", () => {
+        navToggle.classList.toggle("active");
+        navNavigationBar.classList.toggle("show");
+    });
+
+    // close navigation bar when a link is clicked
+    const navLinks = document.querySelectorAll("header .navigation-bar a");
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navToggle.classList.remove("active");
+            navNavigationBar.classList.remove("show");
+        });
+    });
+});
+
+</script>
+</html>

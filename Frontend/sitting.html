@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sitting Space - One Byte Foods</title>
+  <link rel="stylesheet" href="CSS/about.css">
+</head>
+<body>
+   <!-- Header -->
+<header>
+  <nav>
+      <div class="logo">
+          <a href="homepage.html">OneByteFoods</a>
+      </div>
+      
+      <div class="navigation-bar">
+          <ul>
+              <li><a href="homepage.html">Home<span class="underline"></span></a></li>
+              <li><a href="reserve.html">Reservations<span class="underline"></span></a></li>
+              <li><a href="menu.html">Menu<span class="underline"></span></a></li>
+              <li><a href="about.html">About<span class="underline"></span></a></li>
+              <li class="active"><a href="sitting.html">Sitting Space<span class="underline"></span></a></li>
+              <li><a href="contact.html">Contact<span class="underline"></span></a></li>
+          </ul>
+      </div>
+  
+      <div class="toggle">
+          <span class="first"></span>
+          <span class="middle"></span>
+          <span class="last"></span>
+      </div>
+  </nav>
+</header>
+
+<!-- Sitting Space Content -->
+<div id="sittingSpaceContent">
+  <div class="section intro">
+      <div class="text">
+          <h2>Our Seating Options</h2>
+          <p>At One Byte Foods, we offer both indoor and outdoor seating arrangements to cater to your comfort and preferences. Whether you prefer a cozy indoor atmosphere or a vibrant outdoor setting, we have the perfect spot for you. Enjoy our delicious meals in an ambiance that suits your mood.</p>
+      </div>
+  </div>
+  <div class="section" id="indoor">
+      <div class="text">
+          <h2>Indoor Seating</h2>
+          <p>Enjoy our cozy and comfortable indoor seating, perfect for intimate dinners and family gatherings. The ambiance is designed to provide a relaxing dining experience with elegant decor and a warm atmosphere.</p>
+      </div>
+      <video autoplay muted loop class="background-video">
+          <source src="https://res.cloudinary.com/dxc6teqec/video/upload/v1716122102/6011753_Person_People_Restaurant_1280x720_fesvjz.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+  </div>
+  <div class="section" id="outdoor">
+      <div class="text">
+          <h2>Outdoor Seating</h2>
+          <p>Experience our beautiful outdoor seating area, surrounded by greenery and fresh air. It's an ideal spot for enjoying meals in a vibrant outdoor setting, whether for a casual lunch or a special evening under the stars.</p>
+      </div>
+      <video autoplay muted loop class="background-video">
+          <source src="https://res.cloudinary.com/dxc6teqec/video/upload/v1716121909/1108060_1080p_4k_2k_1280x720_wci6ih.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer>  
+    <!-- Copy-Right -->
+    <div class="copyright">
+        <ul class="info1">
+            <li>© One Byte Foods 2024</li>
+            <li><a href="homepage.html">PERMISSIONS AND COPYRIGHT</a></li>
+        </ul>
+        <ul class="info2">
+            <li>Naxal, Kathmandu</li>
+            <li>Tel: 01-5175156</li>
+        </ul>
+        <ul class="info3">
+            <li><a href="contact.html">CONTACT THE TEAM</a></li>
+            <li>Developed with hardwork by <a href="#">Group 2</a> Team</li>
+        </ul>
+    </div>
+</footer> 
+
+</body>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const navToggle = document.querySelector("header .toggle");
+    const navNavigationBar = document.querySelector("header .navigation-bar");
+
+    // toggle navigation bar on click
+    navToggle.addEventListener("click", () => {
+        navToggle.classList.toggle("active");
+        navNavigationBar.classList.toggle("show");
+    });
+
+    // close navigation bar when a link is clicked
+    const navLinks = document.querySelectorAll("header .navigation-bar a");
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navToggle.classList.remove("active");
+            navNavigationBar.classList.remove("show");
+        });
+    });
+});
+</script>
+</html>

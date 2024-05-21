@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - One Byte Foods</title>
+  <link rel="stylesheet" href="CSS/contact.css">
+</head>
+<body>
+  <!-- Video background -->
+  <video id="videoBackground" autoplay muted loop>
+    <source src="https://res.cloudinary.com/dxc6teqec/video/upload/v1715841906/ha9cbb694_ID_198465_5_c1jxfh.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="homepage.html">OneByteFoods</a>
+              </div>
+        
+            <div class="navigation-bar">
+                <ul>
+                    <li><a href="homepage.html">Home<span class="underline"></span></a></li>
+                    <li><a href="reserve.html">Reservations<span class="underline"></span></a></li>
+                    <li><a href="menu.html">Menu<span class="underline"></span></a></li>
+                    <li><a href="about.html">About<span class="underline"></span></a></li>
+                    <li><a href="sitting.html">Sitting Space<span class="underline"></span></a></li>
+                    <li class="active"><a href="contact.html">Contact<span class="underline"></span></a></li>
+                </ul>
+            </div>
+        
+            <div class="toggle">
+                <span class="first"></span>
+                <span class="middle"></span>
+                <span class="last"></span>
+            </div>
+        </nav>
+
+        <div id="contactUsContent">
+          <div class="section contact-info">
+              <div class="text">
+                  <h2>Contact Us</h2>
+                  <p>If you have any questions, need more information, or would like to make a reservation, please feel free to contact us. 
+                    We are here to help and make your experience at One Byte Foods unforgettable.</p>
+              </div>
+          </div>
+      
+          <div class="section restaurant-location">
+              <div class="text">
+                  <h2>Restaurant Location</h2>
+                  <p>One Byte Foods</p>
+                  <p>Naxal, Kathmandu</p>
+                  <p>Tel: 01-5175156</p>
+              </div>
+          </div>
+      
+          <div class="section hours-operation">
+              <div class="text">
+                  <h2>Hours of Operation</h2>
+                  <p>Monday - Friday: 10:00 AM - 10:00 PM</p>
+                  <p>Saturday: 11:00 AM - 11:00 PM</p>
+                  <p>Sunday: Closed</p>
+              </div>
+          </div>
+      
+          <div class="section email-address">
+              <div class="text">
+                  <h2>Email Address</h2>
+                  <p>For reservations and inquiries: <a href="mailto:info@onebytefoods.com">info@onebytefoods.com</a></p>
+              </div>
+          </div>
+      
+          <div class="section contact-form">
+              <div class="text">
+                  <h2>Contact Form</h2>
+                  <form id="contactForm" method="post" action="#">
+                      <div>
+                          <label for="name">Name:</label>
+                          <input type="text" id="name" name="name" required>
+                      </div>
+                      <div>
+                          <label for="email">Email:</label>
+                          <input type="email" id="email" name="email" required>
+                      </div>
+                      <div>
+                          <label for="message">Message:</label>
+                          <textarea id="message" name="message" rows="5" required></textarea>
+                      </div>
+                      <div>
+                          <button type="submit">Submit</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>           
+  
+<!-- Footer -->
+<footer>  
+    <!-- Copy-Right -->
+    <div class="copyright">
+      <ul class="info1">
+        <li>© One Byte Foods 2024</li>
+        <li><a href="homepage.html">PERMISSIONS AND COPYRIGHT</a></li>
+      </ul>
+      <ul class="info2">
+        <li>Naxal, Kathmandu</li>
+        <li>Tel: 01-5175156</li>
+      </ul>
+      <ul class="info3">
+        <li><a href="contact.html">CONTACT THE TEAM</a></li>
+        <li>Developed with hardwork by <a href="#">Group 2</a> Team</li>
+      </ul>
+    </div>
+</footer> 
+</body>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const navToggle = document.querySelector("header .toggle");
+    const navNavigationBar = document.querySelector("header .navigation-bar");
+
+    // toggle navigation bar on click
+    navToggle.addEventListener("click", () => {
+        navToggle.classList.toggle("active");
+        navNavigationBar.classList.toggle("show");
+    });
+
+    // close navigation bar when a link is clicked
+    const navLinks = document.querySelectorAll("header .navigation-bar a");
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navToggle.classList.remove("active");
+            navNavigationBar.classList.remove("show");
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    if (name === "" || email === "" || message === "") {
+      alert("Please fill out all fields before submitting.");
+    } else {
+      alert("Thank you for contacting us! We will get back to you soon.");
+      window.location.href = "homepage.html";
+    }
+  });
+});
+
+</script>
+</html>

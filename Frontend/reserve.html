@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Table Reservation</title>
+    <link rel="stylesheet" type="text/css" href="CSS/reserve.css" />
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div class="content-container">
+        <img src="https://res.cloudinary.com/dxc6teqec/image/upload/v1716139335/background_2_y0etgl.jpg" alt="Image" />
+        <div class="functionality-container">
+          <h2>Table Reservation Form</h2>
+          <p>Welcome to our dining space!</p>
+          <p>
+            We're excited to have you dine with us. Please use the form below to reserve
+            your table.
+          </p>
+          <form id="reservationForm">
+            <label for="numberOfPeople">Number of People:</label>
+            <select id="numberOfPeople" name="numberOfPeople" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+
+            <label for="dateTime">Date and Time: </label>
+            <input type="datetime-local" id="dateTime" name="dateTime" required />
+
+            <!-- Sitting space form -->
+            <div id="sittingSpaceContainer" class="input-box">
+              <label>Sitting Space: </label><br />
+              <label for="indoor">
+                <input type="radio" id="indoor" name="seatingType" value="Indoor" />
+                Indoor Spacing
+              </label>
+              <br />
+              <label for="outdoor">
+                <input type="radio" id="outdoor" name="seatingType" value="Outdoor" />
+                Outdoor Spacing
+              </label>
+            </div>
+
+            <div class="button-container">
+              <button type="button" onclick="findTable()" class="button">
+                Find a Table
+              </button>
+              <button type="button" onclick="goToHomePage()" class="button">
+                Back to Home
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="JS/reserve.js"></script>
+  </body>
+</html>

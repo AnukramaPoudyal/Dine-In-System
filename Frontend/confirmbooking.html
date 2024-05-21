@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table Booking</title>
+  <link rel="stylesheet" href="CSS/booking.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="booking-form">
+      <h1>One Byte Foods</h1>
+      <p>DATE: <span class="x10" id="rtable-date"></span></p>
+      <p>NUMBER OF PEOPLE: <span class="x10" id="rtable-num"></span></p>
+      <p>SITTING SPACE: <span class="x10" id="rtable-sitting"></span></p>
+      <div>
+        <h2>We have table for your reservation</h2>
+        <p>Please click on button below to proceed booking</p>
+        <form id="reservation-form">
+           
+            <div class="form-group">
+              <!-- Cancel Booking button -->
+              <button class="book-btn" onclick="confirmBooking()">Confirm Booking</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="JS/booking.js"></script>
+</body>
+
+</html>

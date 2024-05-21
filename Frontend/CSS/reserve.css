@@ -1,0 +1,112 @@
+  /* =========== Google Fonts ============ */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* Main container styles */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #556B2F; /* Main background color */
+}
+
+/* Content container styles */
+.content-container {
+  color: #556B2F;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  width: 80%; /* Adjust as needed */
+  max-width: 800px; /* Adjust as needed */
+}
+
+/* Image styles */
+.content-container img {
+  width: 50%; /* Adjust to occupy 50% of the screen width */
+  height: auto;
+  border-radius: 10px 0 0 10px;
+  object-fit: cover;
+}
+
+/* Functionality container styles */
+.functionality-container {
+  flex: 1;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.functionality-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px; /* Increase spacing between header and paragraph */
+}
+
+.functionality-container p {
+  margin-bottom: 20px; /* Increase spacing between paragraphs */
+}
+
+/* Form styles */
+#reservationForm {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  border: 2px solid #556B2F; /* Dark outer border color */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Form input styles */
+#reservationForm label {
+  margin-bottom: 10px; /* Add space between labels */
+}
+
+#reservationForm input,
+#reservationForm select {
+  margin-bottom: 15px; /* Add space between inputs and selects */
+}
+
+/* Sitting space form styles */
+#sittingSpaceForm {
+  display: grid;
+  grid-template-columns: max-content auto; /* Two columns: one for labels, one for inputs */
+  grid-row-gap: 10px; /* Gap between rows */
+  align-items: center; /* Center items vertically */
+  border: 2px solid #556B2F; /* Dark outer border color */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Sitting space form input styles */
+#sittingSpaceForm label {
+  grid-column: 1; /* Labels in the first column */
+}
+
+#sittingSpaceForm input[type="radio"] {
+  grid-column: 2; /* Radio buttons in the second column */
+  margin-left: 10px; /* Add space between radio buttons */
+}
+
+/* Button container styles */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Ensure buttons fill the entire width */
+  margin-top: 20px; /* Add spacing between buttons and form */
+}
+
+/* Button styles */
+.button {
+  flex: 1; /* Make buttons occupy equal space */
+  padding: 10px; /* Adjust padding */
+  margin: 0 10px; /* Add spacing between buttons */
+  border: none;
+  border-radius: 5px;
+  background-color: #556B2F;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: darkgoldenrod;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Details</title>
+    <link rel="stylesheet" href="CSS/checkout.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-form">
+            <h2>Table Confirmation</h2>
+            <form id="checkoutForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required autocomplete="name">
+
+                <label for="table">Table Number</label>
+                <input type="text" id="table" name="table" required autocomplete="off"><br>
+
+                <label for="specialOrder">Special Order</label>
+                <select id="specialOrder" name="specialOrder" onchange="calculateTotal()" required>
+                    <option value="">Select a dish...</option>
+                    <option value="Khana Set" data-price="400">Khana Set - Rs.400</option>
+                    <option value="Newari Khaja Set" data-price="350">Newari Khaja Set - Rs.350</option>
+                    <option value="Momo Combo" data-price="250">Momo Combo - Rs.250</option>
+                    <option value="Happy Hour Meal" data-price="300">Happy Hour Meal - Rs.300</option>
+                    <option value="Kids Meal Combo" data-price="270">Kids Meal Combo - Rs.270</option>
+                </select>
+
+                <label for="tableamount">Table Booking Charge</label>
+                <input type="text" id="tableamount" name="tableamount" value="Rs.500" readonly><br>
+
+                <label for="amount">Total Amount</label>
+                <input type="text" id="amount" name="amount" required readonly>
+
+                <div class="buttons-container">
+                    <input type="button" value="Confirm Table" id="confirmTable">
+                    <input type="button" value="Cancel Reservation" id="cancelReservation">
+                </div>
+            </form>
+        </div>
+
+        <div class="right-form">
+            <div class="payment-method-form" id="cardPaymentForm">
+                <h2>Card Payment</h2>
+                <form id="cardPaymentForm">
+                    <label for="card_number">Card Number</label>
+                    <input type="text" id="card_number" name="card_number" required disabled autocomplete="cc-number">
+
+                    <label for="expiry_date">Expiry Date</label>
+                    <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YYYY" required disabled autocomplete="cc-exp">
+
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" maxlength="3" required disabled autocomplete="cc-csc"><br>
+
+                    <input type="submit" value="Pay Now" disabled>
+                </form>
+            </div>
+
+            <div class="payment-method-form" id="onlinePaymentForm">
+                <h2>Online Payment</h2>
+                <form id="onlinePaymentForm">
+                    <label for="online_payment_method">Select Online Payment Method</label>
+                    <select id="online_payment_method" name="online_payment_method" required disabled autocomplete="off">
+                        <option value="">Select</option>
+                        <option value="mobile_banking">Mobile Banking</option>
+                        <option value="esewa">eSewa</option>
+                        <option value="khalti">Khalti</option>
+                    </select>
+
+                    <input type="submit" value="Pay Now" disabled>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/checkout.js"></script>
+</body>
+</html>
