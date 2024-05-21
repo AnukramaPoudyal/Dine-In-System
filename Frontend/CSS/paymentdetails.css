@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-/*Start Global*/
-* {
+    /* =========== Google Fonts ============ */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    /* Global Styles */
+    * {
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
@@ -206,8 +206,8 @@
       height: 100%;
     }
     
-    /* ================== Customer Details List ============== */
-    .customers {
+    /* ================== Payment Details List ============== */
+    .payment {
       position: relative;
       width: 100%;
       padding: 30px;
@@ -217,7 +217,7 @@
       margin-top: 50px;
     }
     
-    .customers .customerDetails {
+    .payment .paymentDetails {
       position: absolute;
       top: 100%;
       left: 50%;
@@ -230,11 +230,11 @@
       border-radius: 20px;
     }
     
-    .customers .customerDetails:hover {
+    .payment .paymentDetails:hover {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
     }
     
-    .customers .cardHeader {
+    .payment .cardHeader {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -251,61 +251,82 @@
       border-radius: 6px;
     }
     
-    .customers table {
+    .payment table {
       width: 100%;
       border-collapse: collapse;
     }
     
-    .customers table thead td {
+    .payment table thead td {
       font-weight: 600;
     }
     
-    .customers .customerDetails table tr td {
+    .payment .tableDetails table tr td {
       padding: 10px;
     }
     
-    .customers .customerDetails table tr td:last-child {
+    .payment .paymentDetails table tr td:last-child {
       text-align: end;
     }
     
-    .customers .customerDetails table tr td:nth-child(2) {
+    .payment .paymentDetails table tr td:nth-child(2) {
       text-align: end;
     }
     
-    .customers .customerDetails table tr td:nth-child(3) {
+    .payment .paymentDetails table tr td:nth-child(3) {
       text-align: center;
     }
     
     /* Hover effect for Full Name column header */
-    .customers .customerDetails table thead tr th:nth-child(1):hover {
+    .payment .paymentDetails table thead tr th:nth-child(1):hover {
       cursor: pointer;
       background: var(--blue);
       color: var(--white);
     }
     
     /* Hover effect for Date Booked column header */
-    .customers .customerDetails table thead tr th:nth-child(2):hover {
+    .payment .paymentDetails table thead tr th:nth-child(2):hover {
       cursor: pointer;
       background: var(--blue);
       color: var(--white);
     }
     
     /* Hover effect for Time Booked column header */
-    .customers .customerDetails table thead tr th:nth-child(3):hover {
+    .payment .paymentDetails table thead tr th:nth-child(3):hover {
       cursor: pointer;
       background: var(--blue);
       color: var(--white);
     }
     
     /* Hover effect for Table Number column header */
-    .customers .customerDetails table thead tr th:nth-child(4):hover {
+    .payment .paymentDetails table thead tr th:nth-child(4):hover {
       cursor: pointer;
       background: var(--blue);
       color: var(--white);
     }
     
     /* Hover effect for Status column header */
-    .customers .customerDetails table thead tr th:nth-child(5):hover {
+    .payment .paymentDetails table thead tr th:nth-child(5):hover {
+      cursor: pointer;
+      background: var(--blue);
+      color: var(--white);
+    }
+    
+    /* Hover effect for Status column header */
+    .payment .paymentDetails table thead tr th:nth-child(6):hover {
+      cursor: pointer;
+      background: var(--blue);
+      color: var(--white);
+    }
+    
+    /* Hover effect for Status column header */
+    .payment .paymentDetails table thead tr th:nth-child(7):hover {
+      cursor: pointer;
+      background: var(--blue);
+      color: var(--white);
+    }
+    
+    /* Hover effect for Status column header */
+    .payment .paymentDetails table thead tr th:nth-child(8):hover {
       cursor: pointer;
       background: var(--blue);
       color: var(--white);
