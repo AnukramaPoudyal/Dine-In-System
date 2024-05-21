@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/*Start Global*/
+* {
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 430px;
+    width: 100%;
+    background: black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container .forms {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container .form {
+    width: 100%;
+    padding: 30px;
+    background-color: #fff;
+}
+
+.form .title {
+    font-size: 27px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-field input {
+    width: 100%;
+    height: 50px;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.input-field input:focus,
+.input-field input:valid {
+    border-bottom-color: #556B2F;
+}
+
+.input-field i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+}
+
+.input-field input:focus ~ i,
+.input-field input:valid ~ i {
+    color: #556B2F;
+}
+
+.button input {
+    width: 100%;
+    height: 50px;
+    border: none;
+    color: #fff;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #556B2F;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.button input:hover {
+    background-color: #b8870e;
+}
+
+.login-signup {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.text a {
+    text-decoration: none;
+    color: #556B2F;
+}
+
+.text a:hover {
+    text-decoration: underline;
+    color: #b8870e;
+}
