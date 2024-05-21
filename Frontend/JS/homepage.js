@@ -130,7 +130,7 @@ window.onscroll = function() {
 };
 
 // home page JS
-if (pageTitle.text === "ROSA- Restaurant") {
+if (pageTitle.text === "One Byte Foods- Restaurant") {
     // svg-down smooth scroll
     svgDown.addEventListener("click", () => {
         window.scroll({

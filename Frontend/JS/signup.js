@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Select necessary elements from the DOM
     const container = document.querySelector(".container");
     const pwShowHide = document.querySelectorAll(".showHidePw");
@@ -32,59 +32,77 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Toggle password visibility
-        pwShowHide.forEach(eyeIcon => {
+        pwShowHide.forEach((eyeIcon) => {
             eyeIcon.addEventListener("click", () => {
                 const pwField = eyeIcon.previousElementSibling;
-                pwField.type = pwField.type === "password"? "text" : "password";
+                pwField.type =
+                    pwField.type === "password" ? "text" : "password";
                 eyeIcon.classList.toggle("uil-eye-slash");
                 eyeIcon.classList.toggle("uil-eye");
             });
         });
 
         // Event listener for signup link
-        signUpLink.addEventListener('click', () => {
+        signUpLink.addEventListener("click", () => {
             container.classList.add("active");
         });
 
         // Event listener for form submission
         submitBtn.addEventListener("click", (event) => {
-            event.preventDefault(); 
+            event.preventDefault();
             const firstName = document.getElementById("firstName").value.trim();
             const lastName = document.getElementById("lastName").value.trim();
-            const contactNumber = document.getElementById("contactNo").value.trim();
+            const contactNumber = document
+                .getElementById("contactNo")
+                .value.trim();
             const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value.trim();
-            const confirmPasswordField = document.getElementById("confirmPassword");
+            const confirmPasswordField =
+                document.getElementById("confirmPassword");
             const confirmPassword = confirmPasswordField.value.trim(); // Add this line
 
-
             // Validate form fields
-            if (firstName === "" || lastName === "" || contactNumber === "" || email === "" || password === "" || confirmPassword === "") { // Update this line
+            if (
+                firstName === "" ||
+                lastName === "" ||
+                contactNumber === "" ||
+                email === "" ||
+                password === "" ||
+                confirmPassword === ""
+            ) {
+                // Update this line
                 alert("Please fill in all the required fields.");
                 return;
             }
 
-            if (!validateName(firstName) ||!validateName(lastName)) {
+            if (!validateName(firstName) || !validateName(lastName)) {
                 alert("First and last names must start with a capital letter.");
                 return;
             }
 
             if (!validateContactNumber(contactNumber)) {
-                alert("Contact number must be a maximum of 10 digits and contain only integers.");
+                alert(
+                    "Contact number must be a maximum of 10 digits and contain only integers."
+                );
                 return;
             }
 
             if (!validateEmail(email)) {
-                alert("Invalid email format! Must be in the format 'user@example.com'");
+                alert(
+                    "Invalid email format! Must be in the format 'user@example.com'"
+                );
                 return;
             }
 
             if (!validatePassword(password)) {
-                alert("Password must be at least 8 characters long and contain a combination of letters and numbers.");
+                alert(
+                    "Password must be at least 8 characters long and contain a combination of letters and numbers."
+                );
                 return;
             }
 
-            if (password !== confirmPasswordField.value.trim()) { // Update this line
+            if (password !== confirmPasswordField.value.trim()) {
+                // Update this line
                 alert("Password and confirm password do not match.");
                 return;
             }
@@ -93,33 +111,37 @@ document.addEventListener("DOMContentLoaded", function() {
             const signupData = {
                 first_name: firstName,
                 last_name: lastName,
-                contact_number: contactNumber,
+                contact: contactNumber,
                 email: email,
-                password: password
+                password: password,
             };
 
             // HTTP POST request to signup endpoint
-            fetch('/signup/', { // Update this line to match your signup endpoint
-                method: 'POST',
+            fetch("http://127.0.0.1:8000/signup/", {
+                // Update this line to match your signup endpoint
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken') // Add this line to include CSRF token
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": getCookie("csrftoken"), // Add this line to include CSRF token
                 },
-                body: JSON.stringify(signupData)
+                body: JSON.stringify(signupData),
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data); // Output the response data
-                window.location.href = "homepage.html"; // Redirect to home.html after successful signup
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data); // Output the response data
+                    window.location.href = "../Frontend/homepage.html"; // Redirect to home.html after successful signup
+                })
+                .catch((error) => {
+                    console.error(
+                        "There was a problem with the fetch operation:",
+                        error
+                    );
+                });
         });
     } else {
         console.error("One or more required elements not found in the DOM.");
@@ -129,12 +151,14 @@ document.addEventListener("DOMContentLoaded", function() {
 // Function to get CSRF token from cookies
 function getCookie(name) {
     let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
+    if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
                 break;
             }
         }
